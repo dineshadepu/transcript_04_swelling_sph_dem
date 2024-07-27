@@ -188,6 +188,21 @@ class Problem(Application):
                                                   rho=self.fluid_rho)
         return stirrer_sph
 
+    def create_impeller(self):
+        x_stirrer, y_stirrer, z_stirrer = get_3d_block(dx=self.dx,
+                                                       length=self.stirrer_length,
+                                                       height=self.stirrer_height,
+                                                       depth=self.stirrer_depth
+                                                       )
+        m = self.dx**self.dim * self.fluid_rho
+        stirrer_sph = get_particle_array_boundary(name='stirrer',
+                                                  x=x_stirrer, y=y_stirrer,
+                                                  z=z_stirrer,
+                                                  u=self.stirrer_velocity,
+                                                  h=self.h, m=m,
+                                                  rho=self.fluid_rho)
+        return stirrer_sph
+
     def create_particles(self):
         # This will create full particle array required for the scheme
         fluid, tank = self.create_fluid_and_tank_particle_arrays()
