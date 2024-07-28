@@ -828,7 +828,7 @@ class Problem(Application):
             rad_s_t_later = body.rad_s[0]
             solid_volume_t_later = np.pi * rad_s_t_later**2.
             fluid_y_later = np.max(fluid.y)
-            fluid_volume_later = fluid_y_later * fluid_length
+            fluid_volume_later = fluid_y_later * fluid_length - self.dx * self.fluid_length
             # print("Volume at later time is", fluid_volume_later)
 
             solid_volume_increase_ = solid_volume_t_later - solid_volume_t_0

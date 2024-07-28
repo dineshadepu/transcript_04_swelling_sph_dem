@@ -148,16 +148,16 @@ class Dinesh2024SingleParticleSwellingVolumeChangeBenchmark(Problem):
 
         rand_case = (list(data.keys())[0])
 
-        t_solid_volume_increase = data[rand_case]['t']
-        solid_volume_increase = data[rand_case]['solid_volume_increase']
+        t_solid_volume_increase = data[rand_case]['t'][::10]
+        solid_volume_increase = data[rand_case]['solid_volume_increase'][::10]
 
         # ==================================
         # Plot x amplitude
         # ==================================
-        plt.plot(t_solid_volume_increase, solid_volume_increase, "o", label='Solid Volume Increase')
+        plt.plot(t_solid_volume_increase, solid_volume_increase, "^-", label='Solid Volume Increase')
         for name in self.case_info:
-            t_fluid_vol = data[name]['t']
-            fluid_vol_increase = data[name]['fluid_volume_increase']
+            t_fluid_vol = data[name]['t'][::10]
+            fluid_vol_increase = data[name]['fluid_volume_increase'][::10]
 
             plt.plot(t_fluid_vol, fluid_vol_increase, label=self.case_info[name][1] + ' Fluid Volume Change')
 
